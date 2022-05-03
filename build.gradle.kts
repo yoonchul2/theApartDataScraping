@@ -21,6 +21,10 @@ configurations {
     }
 }
 
+tasks.withType<Test> {
+    useJUnitPlatform()
+}
+
 repositories {
     mavenCentral()
 }
