@@ -55,6 +55,11 @@ dependencies {
     // queryDsl
     api("com.querydsl:querydsl-jpa:4.2.2")
 
+    //test
+    testImplementation("org.springframework.boot:spring-boot-starter-test")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
     testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
