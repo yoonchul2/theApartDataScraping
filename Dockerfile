@@ -2,6 +2,11 @@ FROM openjdk:8-jdk
 
 ENV NAME bbl-1.0-SNAPSHOT
 
+
+
+
+RUN pwd
+
 RUN echo pwd
 
 ENV PORT 8085
