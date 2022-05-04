@@ -2,13 +2,15 @@ FROM openjdk:8-jdk
 
 ENV NAME bbl-1.0-SNAPSHOT
 
-ADD /build/libs/$NAME.war $NAME.war
+RUN echo "this is child image!"
 
 ENV PORT 8085
 
 ENV PROFILES dev
 
 WORKDIR /tmp
+
+ADD /build/libs/$NAME.war $NAME.war
 
 ENV WARNAME /$NAME.war
 
