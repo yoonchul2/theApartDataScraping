@@ -10,11 +10,12 @@ plugins {
     war
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+    id("org.sonarqube") version "3.1.1"
     idea
 
 }
 group = "com.example"
-version = "0.0.1-SNAPSHOT"
+version = "1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
 configurations {

@@ -2,7 +2,7 @@ FROM openjdk:8-jdk
 
 ENV NAME bbl-1.0-SNAPSHOT
 
-
+ADD /build/libs/$NAME.war ./$NAME.war
 
 ENV PORT 8085
 
@@ -10,7 +10,7 @@ ENV PROFILES dev
 
 WORKDIR /compose
 
-ADD /build/libs/$NAME.war ./$NAME.war
+
 
 ENV WARNAME /$NAME.war
 
