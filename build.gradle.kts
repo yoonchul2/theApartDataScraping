@@ -1,6 +1,7 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    base
     id("org.springframework.boot") version "2.6.7"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21"
@@ -9,6 +10,7 @@ plugins {
     war
     kotlin("jvm") version "1.6.21"
     kotlin("plugin.spring") version "1.6.21"
+    idea
 
 }
 group = "com.example"
@@ -24,6 +26,7 @@ apply {
     plugin("java")
     plugin("org.jetbrains.kotlin.jvm")
 }
+
 repositories {
     mavenCentral()
 }
