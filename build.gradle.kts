@@ -20,17 +20,10 @@ configurations {
         extendsFrom(configurations.annotationProcessor.get())
     }
 }
-
-tasks.withType<Test> {
-    useJUnitPlatform()
+apply {
+    plugin("java")
+    plugin("org.jetbrains.kotlin.jvm")
 }
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
-    }
-}
-
 repositories {
     mavenCentral()
 }
@@ -59,8 +52,6 @@ dependencies {
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.junit.jupiter:junit-jupiter-api")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
-
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
 }
 
 tasks.withType<KotlinCompile> {
