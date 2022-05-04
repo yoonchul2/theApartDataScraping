@@ -4,18 +4,13 @@ ENV NAME bbl-1.0-SNAPSHOT
 
 
 
-
-RUN pwd
-
-RUN echo pwd
-
 ENV PORT 8085
 
 ENV PROFILES dev
 
 WORKDIR /compose
 
-ADD /build/libs/$NAME.war $NAME.war
+ADD /build/libs/$NAME.war ./$NAME.war
 
 ENV WARNAME /$NAME.war
 
