@@ -2,11 +2,15 @@ spring:
   profiles:
     active: dev
   jpa:
-    #show-sql: true
+    show-sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: none
     properties:
       hibernate:
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+        order_updates: true
         #format_sql: true
         #use_sql_comments: true
         dialect: org.hibernate.dialect.MySQL5InnoDBDialect
@@ -14,15 +18,18 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 4
-    url: jdbc:mysql://3.37.229.116:3307/bbldb
-    username: bbl
-    password: bbl12!
+    url: jdbc:mysql://localhost:3306/testdb?rewriteBatchedStatements=true
+    username: root
+    password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   output:
     ansi:
       enabled: always
   urldata:
     api: api
+
+server:
+  port: 8081
 #mybatis:
  # type-aliases-package:
  # mapper-locations: classpath*:mapper/**/*.xml
@@ -38,3 +45,7 @@ decorator:
       multiline: true
       logging: slf4j
 
+etc:
+  data:
+#    file: C:\Users\mrsbok\Downloads/test
+    file: ./file
