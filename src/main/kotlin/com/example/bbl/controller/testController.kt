@@ -36,6 +36,7 @@ class testController {
     @Autowired
     lateinit var  jdbcTemplate: JdbcTemplate
 
+    fun maxf2(a: Int, b: Int) = if(a > b) a else b
 
     @PostMapping("/ss")
     fun test(@RequestBody userForm: UserForm){
