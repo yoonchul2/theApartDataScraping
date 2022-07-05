@@ -4,7 +4,7 @@ plugins {
     id("io.spring.dependency-management")
     id("org.jetbrains.kotlin.plugin.jpa")
     id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0"
-    id("org.jetbrains.kotlin.kapt") version "1.3.61" apply false
+    kotlin("kapt")
     id("org.sonarqube")  version "3.1.1"
     war
 }
