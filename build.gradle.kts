@@ -14,7 +14,7 @@ plugins {
     idea
 
 }
-group = "com.bokbuin"
+group = "com.bbl"
 version = "1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
