@@ -11,7 +11,7 @@ plugins {
     war
     kotlin("jvm")
     kotlin("plugin.spring")
-    id("org.sonarqube") version "3.1.1"
+    id("org.sonarqube")
     idea
 }
 
