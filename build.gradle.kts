@@ -11,23 +11,33 @@ plugins {
     idea
 
 }
-group = "com.bbl"
-version = "1.0-SNAPSHOT"
-java.sourceCompatibility = JavaVersion.VERSION_1_8
 
-configurations {
-    compileOnly {
-        extendsFrom(configurations.annotationProcessor.get())
+allprojects {
+    group = "com.bbl"
+    version = "1.0-SNAPSHOT"
+
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    apply {
+        plugin("java")
+        plugin("org.jetbrains.kotlin.jvm")
+    }
+
+    tasks.withType<Test> {
+        useJUnitPlatform()
+    }
+
+    tasks.withType<KotlinCompile> {
+        kotlinOptions {
+            freeCompilerArgs = listOf("-Xjsr305=strict")
+            jvmTarget = "1.8"
+        }
     }
 }
-apply {
-    plugin("java")
-    plugin("org.jetbrains.kotlin.jvm")
-}
 
-repositories {
-    mavenCentral()
-}
 
 dependencies {
     val implementation by configurations
