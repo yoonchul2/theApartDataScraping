@@ -14,7 +14,7 @@ plugins {
     idea
 
 }
-group = "com.example"
+group = "com.bokbuin"
 version = "1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -33,29 +33,19 @@ repositories {
 }
 
 dependencies {
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.jetbrains.kotlin:kotlin-reflect")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-    compileOnly("org.projectlombok:lombok")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
-    annotationProcessor("org.projectlombok:lombok")
-    providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
-    implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+    val implementation by configurations
+    implementation(kotlin("stdlib-jdk8"))
+    implementation(kotlin("allopen"))
+    implementation(kotlin("noarg"))
+    implementation(kotlin("reflect"))
 
-    implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-webflux")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
     implementation("io.jsonwebtoken:jjwt:0.9.1")
     implementation("com.google.code.gson:gson")
-    implementation("mysql:mysql-connector-java")
-    // queryDsl
-    api("com.querydsl:querydsl-jpa:4.2.2")
 
-    //test
-    testImplementation("org.springframework.boot:spring-boot-starter-test")
-    testImplementation("org.junit.jupiter:junit-jupiter-api")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+    // log
+    implementation("io.github.microutils:kotlin-logging:1.7.8")
 }
 
 tasks.withType<KotlinCompile> {
