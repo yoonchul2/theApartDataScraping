@@ -7,7 +7,7 @@ plugins {
     id("io.spring.dependency-management")
     id("org.jetbrains.kotlin.plugin.jpa")
     id("ws.doerr.projects.emailtemplates.gradleplugin")
-    id("org.jetbrains.kotlin.kapt")
+    kotlin("kapt")
     war
     kotlin("jvm")
     kotlin("plugin.spring")
