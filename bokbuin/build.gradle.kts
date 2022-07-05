@@ -3,7 +3,7 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
     base
-    id("org.springframework.boot") version "2.6.7"
+    id("org.springframework.boot")
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21"
     id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0" apply false
