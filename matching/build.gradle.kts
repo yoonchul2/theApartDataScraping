@@ -16,7 +16,7 @@ plugins {
 }
 
 group = "com.mrs"
-version = "0.0.1-SNAPSHOT"
+version = "matching-1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
 configurations {
