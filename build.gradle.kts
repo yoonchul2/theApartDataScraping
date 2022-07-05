@@ -5,11 +5,10 @@ plugins {
     kotlin("jvm") version "1.6.21"  apply false
     kotlin("plugin.spring") version "1.6.21"  apply false
     id("org.springframework.boot") version "2.6.7" apply false
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21"
+    id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
     id("org.jetbrains.kotlin.kapt") version "1.3.61" apply false
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21" apply false
     idea
-
 }
 
 allprojects {
@@ -38,25 +37,65 @@ allprojects {
     }
 }
 
+subprojects {
+    apply {
+        plugin("org.jetbrains.kotlin.jvm")
+        plugin("org.jetbrains.kotlin.plugin.spring")
+        plugin("io.spring.dependency-management")
+        plugin("idea")
+    }
 
-dependencies {
-    val implementation by configurations
-    implementation(kotlin("stdlib-jdk8"))
-    implementation(kotlin("allopen"))
-    implementation(kotlin("noarg"))
-    implementation(kotlin("reflect"))
+    idea {
+        module {
+            val kaptMain = file("build/generated/source/kaptKotlin/main")
+            sourceDirs.add(kaptMain)
+            generatedSourceDirs.add(kaptMain)
+        }
+    }
 
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+    the<io.spring.gradle.dependencymanagement.dsl.DependencyManagementExtension>().apply {
+        imports {
+            mavenBom(org.springframework.boot.gradle.plugin.SpringBootPlugin.BOM_COORDINATES)
+        }
+    }
 
-    implementation("io.jsonwebtoken:jjwt:0.9.1")
-    implementation("com.google.code.gson:gson")
+    // log4j 취약점 조치 - 2021.12.14
+    configurations.all {
+        resolutionStrategy.eachDependency {
+            if (this.requested.group == "org.apache.logging.log4j") {
+                this.useVersion("2.17.0")
+            }
+        }
+    }
 
-    // log
-    implementation("io.github.microutils:kotlin-logging:1.7.8")
+    dependencies {
+        val implementation by configurations
+        implementation(kotlin("stdlib-jdk8"))
+        implementation(kotlin("allopen"))
+        implementation(kotlin("noarg"))
+        implementation(kotlin("reflect"))
+
+        implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
+
+        implementation("io.jsonwebtoken:jjwt:0.9.1")
+        implementation("com.google.code.gson:gson")
+
+        // log
+        implementation("io.github.microutils:kotlin-logging:1.7.8")
+    }
 }
 
+project(":matching") {
+    dependencies {
+        val implementation by configurations
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
+    }
 
-
-tasks.withType<Test> {
-    useJUnitPlatform()
+project(":bokbuin") {
+    dependencies {
+        val implementation by configurations
+        implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
+    }
 }
+}
+

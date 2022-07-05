@@ -1,18 +1,12 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 
 plugins {
-    base
-    id("org.springframework.boot")
-    id("io.spring.dependency-management")
-    id("org.jetbrains.kotlin.plugin.jpa")
-    id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0" apply false
-    kotlin("kapt")
-    war
-    kotlin("jvm")
-    kotlin("plugin.spring")
+    id("org.springframework.boot") version "2.6.7" apply false
+    id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
+    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21" apply false
+    id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0"
+    id("org.jetbrains.kotlin.kapt") version "1.3.61" apply false
     id("org.sonarqube")  version "3.1.1"
-    idea
+    war
 }
 
 group = "com.mrs"
@@ -35,7 +29,7 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compileOnly("org.projectlombok:lombok")
-    developmentOnly("org.springframework.boot:spring-boot-devtools")
+//    developmentOnly("org.springframework.boot:spring-boot-devtools")
     annotationProcessor("org.projectlombok:lombok")
     providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")
     implementation("org.springframework.boot:spring-boot-starter-data-jpa")
@@ -46,7 +40,10 @@ dependencies {
 
     implementation("mysql:mysql-connector-java")
     // queryDsl
-    api("com.querydsl:querydsl-jpa:4.2.2")
+    implementation("com.querydsl:querydsl-jpa:4.2.2")
+    implementation("com.querydsl:querydsl-apt:4.2.2:jpa")
+    implementation("org.hibernate.javax.persistence", "hibernate-jpa-2.1-api", "1.0.2.Final")
+
 
     //test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -54,18 +51,3 @@ dependencies {
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "11"
-    }
-}
-
-tasks.withType<Test> {
-    useJUnitPlatform()
-}
-
-tasks.withType<BootBuildImage> {
-    builder = "paketobuildpacks/builder:tiny"
-    environment = mapOf("BP_NATIVE_IMAGE" to "true")
-}
