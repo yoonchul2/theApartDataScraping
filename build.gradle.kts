@@ -2,15 +2,12 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     base
+    kotlin("jvm") version "1.6.21"  apply false
+    kotlin("plugin.spring") version "1.6.21"  apply false
     id("org.springframework.boot") version "2.6.7" apply false
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
     id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21"
-    id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0" apply false
     id("org.jetbrains.kotlin.kapt") version "1.3.61" apply false
-    war
-    kotlin("jvm") version "1.6.21"
-    kotlin("plugin.spring") version "1.6.21"
-    id("org.sonarqube") version "3.1.1"
     idea
 
 }
