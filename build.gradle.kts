@@ -55,12 +55,7 @@ dependencies {
     implementation("io.github.microutils:kotlin-logging:1.7.8")
 }
 
-tasks.withType<KotlinCompile> {
-    kotlinOptions {
-        freeCompilerArgs = listOf("-Xjsr305=strict")
-        jvmTarget = "1.8"
-    }
-}
+
 
 tasks.withType<Test> {
     useJUnitPlatform()

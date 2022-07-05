@@ -6,7 +6,7 @@ plugins {
     id("org.springframework.boot")
     id("io.spring.dependency-management")
     id("org.jetbrains.kotlin.plugin.jpa")
-    id("ws.doerr.projects.emailtemplates.gradleplugin")
+    id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0" apply false
     kotlin("kapt")
     war
     kotlin("jvm")
