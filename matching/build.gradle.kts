@@ -1,10 +1,10 @@
 
 plugins {
-    id("org.springframework.boot") version "2.6.7" apply false
-    id("io.spring.dependency-management") version "1.0.11.RELEASE" apply false
-    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21" apply false
+    id("org.springframework.boot")
+    id("io.spring.dependency-management")
+    id("org.jetbrains.kotlin.plugin.jpa")
     id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0"
-    id("org.jetbrains.kotlin.kapt") version "1.3.61" apply false
+    id("org.jetbrains.kotlin.kapt")
     id("org.sonarqube")  version "3.1.1"
     war
 }
