@@ -4,13 +4,13 @@ import org.springframework.boot.gradle.tasks.bundling.BootBuildImage
 plugins {
     base
     id("org.springframework.boot")
-    id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("org.jetbrains.kotlin.plugin.jpa") version "1.6.21"
-    id("ws.doerr.projects.emailtemplates.gradleplugin") version "0.3.0" apply false
-    id("org.jetbrains.kotlin.kapt") version "1.3.61" apply false
+    id("io.spring.dependency-management")
+    id("org.jetbrains.kotlin.plugin.jpa")
+    id("ws.doerr.projects.emailtemplates.gradleplugin")
+    id("org.jetbrains.kotlin.kapt")
     war
-    kotlin("jvm") version "1.6.21"
-    kotlin("plugin.spring") version "1.6.21"
+    kotlin("jvm")
+    kotlin("plugin.spring")
     id("org.sonarqube") version "3.1.1"
     idea
 }
