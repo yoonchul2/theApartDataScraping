@@ -9,7 +9,7 @@ plugins {
     war
 }
 
-group = "com.mrs"
+group = "com.bbl"
 version = "matching-1.0-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_11
 
