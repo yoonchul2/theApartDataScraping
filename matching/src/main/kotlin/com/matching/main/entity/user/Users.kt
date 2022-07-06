@@ -1,4 +1,4 @@
-package com.bokbuin.main.entity.user
+package com.matching.main.entity.user
 
 
 import java.time.LocalDateTime

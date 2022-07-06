@@ -1,7 +1,8 @@
 package com.bokbuin.main.controller
 
-import com.bokbuin.main.model.UserForm
-import com.bokbuin.main.service.userService
+
+import com.matching.main.model.UserForm
+import com.matching.main.service.userService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.jdbc.core.JdbcTemplate

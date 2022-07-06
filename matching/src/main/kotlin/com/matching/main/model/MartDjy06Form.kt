@@ -1,17 +1,9 @@
-package com.matching.main.entity
-
+package com.bokbuin.main.model
 
 import java.math.BigDecimal
-import javax.persistence.*
 
-@Entity
-@Table(name ="mart_djy_06")
-data class Martdjy06(
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name="idx")
-        val idx: Long?=null,
+data class MartDjy06Form(
 
         val bldgPk : String,
 
@@ -34,15 +26,15 @@ data class Martdjy06(
         val dongCdd : String,
 
         val landDivCd : String,
-        
+
         val bun : String,
-        
+
         val ji : String,
-        
+
         val specialLandNm : String,
-        
+
         val block : String,
-        
+
         val lot : String,
 
         val addressDoroCd : String,
@@ -90,4 +82,6 @@ data class Martdjy06(
         val extent : BigDecimal = BigDecimal.ZERO,
 
         val createDt : String
-        )
+
+
+)
