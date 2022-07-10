@@ -43,6 +43,11 @@ class testController {
         userService.userSave(userForm)
     }
 
+
+    @PostMapping("/ssff")
+    fun  test222() : String{
+        return "성공임 ㅋㅋㅋ"
+    }
     @PostMapping("/sss")
     fun testss(): MutableList<Any>? {
 
