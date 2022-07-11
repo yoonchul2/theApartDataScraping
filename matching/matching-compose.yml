@@ -8,3 +8,12 @@ services:
       - "8082:8082"
     deploy:
       replicas : 1
+    networks:
+      - bokbuin_module_network
+
+
+networks:
+  bokbuin_module_network:
+    driver: overlay
+    attachable: true
+
