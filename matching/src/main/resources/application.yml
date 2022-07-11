@@ -18,9 +18,9 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 4
-    url: jdbc:mysql://localhost:3306/testdb?rewriteBatchedStatements=true
-    username: root
-    password: 1234
+    url: jdbc:mysql://3.38.184.64:3307/matching?rewriteBatchedStatements=true
+    username: bokbuin
+    password: bokbuin12!
     driver-class-name: com.mysql.cj.jdbc.Driver
   output:
     ansi:
@@ -49,3 +49,33 @@ etc:
   data:
 #    file: C:\Users\mrsbok\Downloads/test
     file: ./file
+
+---
+spring:
+  active: live
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        jdbc:
+          batch_size: 1000
+        order_inserts: true
+        order_updates: true
+        #format_sql: true
+        #use_sql_comments: true
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    datasource:
+      hikari:
+        maximum-pool-size: 4
+      url: jdbc:mysql://3.38.184.64:3307/matching?rewriteBatchedStatements=true
+      username: bokbuin
+      password: bokbuin12!
+      driver-class-name: com.mysql.cj.jdbc.Driver
+    output:
+      ansi:
+        enabled: always
+    urldata:
+      api: api
