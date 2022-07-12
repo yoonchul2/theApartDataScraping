@@ -49,7 +49,7 @@ class testController {
 
     @PostMapping("/ssff")
     fun  test222() : String{
-        return "성공임 ㅋㅋㅋㅋ"
+        return "성공임 ㅋㅋㅋㅋㅋ"
     }
     @PostMapping("/sss")
     fun testss(): MutableList<Any>? {
