@@ -2,7 +2,6 @@ package com.matching.main.controller
 
 import com.matching.main.entity.Martdjy06
 import com.matching.main.model.UserForm
-import com.matching.main.repository.RealDealRepository
 import com.matching.main.service.userService
 
 import org.springframework.beans.factory.annotation.Autowired
@@ -28,8 +27,7 @@ class testController {
     @Autowired
     lateinit var userService : userService
 
-    @Autowired
-    lateinit var realDealRepository : RealDealRepository
+
 
 
     @Value("\${etc.data.file}")
