@@ -10,8 +10,6 @@ ENV PROFILES dev
 
 WORKDIR /compose
 
-
-
 ENV WARNAME /$NAME.war
 
 EXPOSE ${PORT}
