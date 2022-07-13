@@ -23,7 +23,7 @@ data class MartDjy06Form(
 
         val sigunguCd : String,
 
-        val dongCdd : String,
+        val dongCd : String,
 
         val landDivCd : String,
 

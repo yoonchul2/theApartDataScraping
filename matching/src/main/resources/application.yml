@@ -49,6 +49,7 @@ etc:
   data:
 #    file: C:\Users\mrsbok\Downloads/test
     file: ./file
+   # file2: ./file2
 
 ---
 spring:

@@ -31,7 +31,7 @@ data class Martdjy06(
 
         val sigunguCd : String,
 
-        val dongCdd : String,
+        val dongCd : String,
 
         val landDivCd : String,
         

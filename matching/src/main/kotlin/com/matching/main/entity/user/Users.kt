@@ -9,7 +9,7 @@ import javax.persistence.*
 data class Users(
 
         @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
+        @GeneratedValue(strategy = GenerationType.IDENTITY)
         @Column(name = "idx")
         val idx: Long? = null,
 
