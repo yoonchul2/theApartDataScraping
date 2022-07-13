@@ -4,7 +4,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         jdbc:
@@ -18,7 +18,7 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 4
-    url: jdbc:mysql://localhost:3306/testdb?rewriteBatchedStatements=true
+    url: jdbc:mysql://localhost:3306/matching?rewriteBatchedStatements=true
     username: root
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
