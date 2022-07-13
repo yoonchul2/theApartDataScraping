@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import javax.persistence.*
 
 @Entity
-@Table(name ="mart_djy_08")
+@Table(name ="mart_djy_08") //주택가격
 data class Martdjy08(
 
         @Id
@@ -45,7 +45,7 @@ data class Martdjy08(
 
         val lot: String,
 
-        val etcLandNum: String,
+        val etcLandNum: Int,
 
         val addressDoroCd: String,
 
@@ -53,9 +53,9 @@ data class Martdjy08(
 
         val addressDoroUpdownCd: String,
 
-        val addressDoroBun: String,
+        val addressDoroBun: Int,
 
-        val addressDoroJi: String,
+        val addressDoroJi: Int,
 
         val standardDt: String,
 

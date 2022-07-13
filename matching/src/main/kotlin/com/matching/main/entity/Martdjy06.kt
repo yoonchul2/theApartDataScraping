@@ -5,7 +5,7 @@ import java.math.BigDecimal
 import javax.persistence.*
 
 @Entity
-@Table(name ="mart_djy_06")
+@Table(name ="mart_djy_06") //전유공용면적
 data class Martdjy06(
 
         @Id
