@@ -4,13 +4,11 @@ ENV NAME matching-1.0-SNAPSHOT
 
 ADD /build/libs/$NAME.war ./$NAME.war
 
-ENV PORT 8082
+ENV PORT 9010
 
 ENV PROFILES dev
 
 WORKDIR /compose
-
-
 
 ENV WARNAME /$NAME.war
 

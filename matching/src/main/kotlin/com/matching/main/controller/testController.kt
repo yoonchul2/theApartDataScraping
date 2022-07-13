@@ -26,6 +26,9 @@ class testController {
     @Autowired
     lateinit var userService : userService
 
+
+
+
     @Value("\${etc.data.file}")
     lateinit var file: String
 
@@ -45,7 +48,7 @@ class testController {
 
     @PostMapping("/ssff")
     fun  test222() : String{
-        return "성공임 ㅋㅋㅋ"
+        return "성공임 ㅋㅋㅋㅋㅋ"
     }
    //@PostMapping("/sss")
    //fun testss(): MutableList<Any>? {
