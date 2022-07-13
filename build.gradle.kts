@@ -97,5 +97,13 @@ project(":bokbuin") {
         implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
     }
 }
+
+    project(":realDealBatch") {
+        dependencies {
+            val implementation by configurations
+            implementation(project(":matching"))
+            implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.3")
+        }
+    }
 }
 
