@@ -48,8 +48,8 @@ decorator:
 etc:
   data:
 #    file: C:\Users\mrsbok\Downloads/test
-    file: ./file
-   # file2: ./file2
+    file: ./file2
+
 
 ---
 spring:
@@ -57,7 +57,7 @@ spring:
   jpa:
     show-sql: true
     hibernate:
-      ddl-auto: none
+      ddl-auto: update
     properties:
       hibernate:
         jdbc:

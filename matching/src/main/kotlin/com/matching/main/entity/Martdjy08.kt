@@ -45,7 +45,7 @@ data class Martdjy08(
 
         val lot: String,
 
-        val etcLandNum: Int,
+        val etcLandNum: Int? = null,
 
         val addressDoroCd: String,
 
@@ -53,9 +53,9 @@ data class Martdjy08(
 
         val addressDoroUpdownCd: String,
 
-        val addressDoroBun: Int,
+        val addressDoroBun: Int? = null,
 
-        val addressDoroJi: Int,
+        val addressDoroJi: Int?= null,
 
         val standardDt: String,
 

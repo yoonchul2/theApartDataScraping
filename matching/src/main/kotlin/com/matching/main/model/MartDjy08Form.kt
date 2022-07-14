@@ -37,7 +37,7 @@ data class MartDjy08Form(
 
         val lot: String,
 
-        val etcLandNum: String,
+        val etcLandNum: Int,
 
         val addressDoroCd: String,
 
@@ -45,9 +45,9 @@ data class MartDjy08Form(
 
         val addressDoroUpdownCd: String,
 
-        val addressDoroBun: String,
+        val addressDoroBun: Int,
 
-        val addressDoroJi: String,
+        val addressDoroJi: Int,
 
         val standardDt: String,
 
