@@ -174,7 +174,7 @@ class testController {
         } while (ind.readLine().also { str = it } != null)
         ind.close()
         System.out.println("-------------------------")
-        System.out.println(data2)
+        System.out.println(data2.size)
         System.out.println("-------------------------")
 
 
