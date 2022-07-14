@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.io.*
+import java.math.BigDecimal
 import java.net.HttpURLConnection
 import java.net.URL
 import java.nio.channels.Channels
@@ -92,89 +93,118 @@ class testController {
                 data = str?.split("|") as MutableList<String>
 
                 if(data.size <= 18){
-                    data2.add(data[0])
+                    list.add(
+                        Martdjy08(
+                            bldgPk = data[0],
+                            bldgDivCd = data[1],
+                            bldgDivNm =  data[2],
+                            bldgKindCd = data[3],
+                            bldgKindNm = data[4],
+                            address = data[5],
+                            addressDoro = data[6],
+                            bldgNm = data[7],
+                            sigunguCd = data[8],
+                            dongCd = data[9],
+                            landDivCd = data[10],
+                            bun = data[11],
+                            ji = data[12],
+                            specialLandNm = data[13],
+                            block = data[14],
+                            lot = data[15],
+                            etcLandNum = data[16].toInt(),
+                            addressDoroCd = data[17],
+                            addressDoroLawdCd = data[18],
+                            addressDoroUpdownCd = "",
+                            addressDoroBun = 0,
+                            addressDoroJi = 0,
+                            standardDt = "",
+                            price = BigDecimal.ZERO,
+                            createDt = ""
+                        )
+                    )
 
+                }else{
+                if(data[20] == ""){
+                    data[20] = "0"
                 }
-//                if(data[20] == ""){
-//                    data[20] = "0"
-//                }
-//                if(data[21] == ""){
-//                    data[21] = "0"
-//                }
-//                list.add(
-//                    Martdjy08(
-//                        bldgPk = data[0],
-//                        bldgDivCd = data[1],
-//                        bldgDivNm =  data[2],
-//                        bldgKindCd = data[3],
-//                        bldgKindNm = data[4],
-//                        address = data[5],
-//                        addressDoro = data[6],
-//                        bldgNm = data[7],
-//                        sigunguCd = data[8],
-//                        dongCd = data[9],
-//                        landDivCd = data[10],
-//                        bun = data[11],
-//                        ji = data[12],
-//                        specialLandNm = data[13],
-//                        block = data[14],
-//                        lot = data[15],
-//                        etcLandNum = data[16].toInt(),
-//                        addressDoroCd = data[17],
-//                        addressDoroLawdCd = data[18],
-//                        addressDoroUpdownCd = data[19],
-//                        addressDoroBun = data[20].toInt(),
-//                        addressDoroJi = data[21].toInt(),
-//                        standardDt = data[22],
-//                        price = data[23].toBigDecimal(),
-//                        createDt = data[24]
-//                     )
-//                )
+                if(data[21] == ""){
+                    data[21] = "0"
+                }
+                list.add(
+                    Martdjy08(
+                        bldgPk = data[0],
+                        bldgDivCd = data[1],
+                        bldgDivNm =  data[2],
+                        bldgKindCd = data[3],
+                        bldgKindNm = data[4],
+                        address = data[5],
+                        addressDoro = data[6],
+                        bldgNm = data[7],
+                        sigunguCd = data[8],
+                        dongCd = data[9],
+                        landDivCd = data[10],
+                        bun = data[11],
+                        ji = data[12],
+                        specialLandNm = data[13],
+                        block = data[14],
+                        lot = data[15],
+                        etcLandNum = data[16].toInt(),
+                        addressDoroCd = data[17],
+                        addressDoroLawdCd = data[18],
+                        addressDoroUpdownCd = data[19],
+                        addressDoroBun = data[20].toInt(),
+                        addressDoroJi = data[21].toInt(),
+                        standardDt = data[22],
+                        price = data[23].toBigDecimal(),
+                        createDt = data[24]
+                        )
+                    )
+                }
                 data = mutableListOf()
                 println("size:" + list.size)
-//                if(list.size == 100000){
-//
-//                    println("ddssgg${list.size}")
-//                    jdbcTemplate.batchUpdate(
-//                        "insert into mart_djy_08 (bldg_pk, bldg_div_cd, bldg_div_nm, bldg_kind_cd, bldg_kind_nm, address, address_doro, bldg_nm, sigungu_cd, dong_cd, land_div_cd, bun, ji, special_land_nm, block, lot, etc_land_num, address_doro_cd, address_doro_lawd_cd, address_doro_updown_cd, address_doro_bun, address_doro_ji, standard_dt, price, create_dt) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", // bulk insert에 사용할 기본 쿼리
-//                        list, // insert할 모델
-//                        100000 // 1번의 batch로 함께 insert할 batch 사이즈
-//                    ) { ps, argument ->
-//                        ps.setString(1, argument.bldgPk)
-//                        ps.setString(2,argument.bldgDivCd)
-//                        ps.setString(3,argument.bldgDivNm)
-//                        ps.setString(4,argument.bldgKindCd)
-//                        ps.setString(5,argument.bldgKindNm)
-//                        ps.setString(6,argument.address)
-//                        ps.setString(7,argument.addressDoro)
-//                        ps.setString(8,argument.bldgNm)
-//                        ps.setString(9,argument.sigunguCd)
-//                        ps.setString(10,argument.dongCd)
-//                        ps.setString(11,argument.landDivCd)
-//                        ps.setString(12,argument.bun)
-//                        ps.setString(13,argument.ji)
-//                        ps.setString(14,argument.specialLandNm)
-//                        ps.setString(15,argument.block)
-//                        ps.setString(16,argument.lot)
-//                        ps.setInt(17,argument?.etcLandNum!!)
-//                        ps.setString(18,argument.addressDoroCd)
-//                        ps.setString(19,argument.addressDoroLawdCd)
-//                        ps.setString(20,argument.addressDoroUpdownCd)
-//                        ps.setInt(21,argument?.addressDoroBun!!)
-//                        ps.setInt(22,argument?.addressDoroJi!!)
-//                        ps.setBigDecimal(23,argument.price)
-//                        ps.setString(25,argument.createDt)
-//
-//
-//                    }
-//                    list = mutableListOf()
-//                    println("ddssggs${list.size}")
-//                }
+                if(list.size == 100000){
+
+                    println("ddssgg${list.size}")
+                    jdbcTemplate.batchUpdate(
+                        "insert into mart_djy_08 (bldg_pk, bldg_div_cd, bldg_div_nm, bldg_kind_cd, bldg_kind_nm, address, address_doro, bldg_nm, sigungu_cd, dong_cd, land_div_cd, bun, ji, special_land_nm, block, lot, etc_land_num, address_doro_cd, address_doro_lawd_cd, address_doro_updown_cd, address_doro_bun, address_doro_ji, standard_dt, price, create_dt) values (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", // bulk insert에 사용할 기본 쿼리
+                        list, // insert할 모델
+                        100000 // 1번의 batch로 함께 insert할 batch 사이즈
+                    ) { ps, argument ->
+                        ps.setString(1, argument.bldgPk)
+                        ps.setString(2,argument.bldgDivCd)
+                        ps.setString(3,argument.bldgDivNm)
+                        ps.setString(4,argument.bldgKindCd)
+                        ps.setString(5,argument.bldgKindNm)
+                        ps.setString(6,argument.address)
+                        ps.setString(7,argument.addressDoro)
+                        ps.setString(8,argument.bldgNm)
+                        ps.setString(9,argument.sigunguCd)
+                        ps.setString(10,argument.dongCd)
+                        ps.setString(11,argument.landDivCd)
+                        ps.setString(12,argument.bun)
+                        ps.setString(13,argument.ji)
+                        ps.setString(14,argument.specialLandNm)
+                        ps.setString(15,argument.block)
+                        ps.setString(16,argument.lot)
+                        ps.setInt(17,argument?.etcLandNum!!)
+                        ps.setString(18,argument.addressDoroCd)
+                        ps.setString(19,argument.addressDoroLawdCd)
+                        ps.setString(20,argument.addressDoroUpdownCd)
+                        ps.setInt(21,argument?.addressDoroBun!!)
+                        ps.setInt(22,argument?.addressDoroJi!!)
+                        ps.setBigDecimal(23,argument.price)
+                        ps.setString(25,argument.createDt)
+
+
+                    }
+                    list = mutableListOf()
+                    println("ddssggs${list.size}")
+                }
             }
         } while (ind.readLine().also { str = it } != null)
         ind.close()
         System.out.println("-------------------------")
-        System.out.println(data2.size)
+        System.out.println(data2)
         System.out.println("-------------------------")
 
 
