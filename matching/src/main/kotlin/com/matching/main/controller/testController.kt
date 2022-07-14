@@ -113,7 +113,7 @@ class testController {
                             lot = data[15],
                             etcLandNum = data[16].toInt(),
                             addressDoroCd = data[17],
-                            addressDoroLawdCd = data[18],
+                            addressDoroLawdCd = "",
                             addressDoroUpdownCd = "",
                             addressDoroBun = 0,
                             addressDoroJi = 0,
