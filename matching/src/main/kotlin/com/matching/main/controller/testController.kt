@@ -89,6 +89,9 @@ class testController {
         do{
             if(str != "") {
                 data = str?.split("|") as MutableList<String>
+                System.out.println("-------------------------")
+                System.out.println(data)
+                System.out.println("-------------------------")
                 if(data[20] == ""){
                     data[20] = "0"
                 }
