@@ -89,7 +89,12 @@ class testController {
         do{
             if(str != "") {
                 data = str?.split("|") as MutableList<String>
-
+                if(data[20] == ""){
+                    data[20] = "0"
+                }
+                if(data[21] == ""){
+                    data[21] = "0"
+                }
                 list.add(
                     Martdjy08(
                         bldgPk = data[0],
