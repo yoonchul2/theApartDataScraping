@@ -1,4 +1,4 @@
-package com.bokbuin.main.controller
+/*package com.bokbuin.main.controller
 
 import com.bokbuin.main.entity.Martdjy06
 import com.bokbuin.main.model.UserForm
@@ -281,3 +281,4 @@ class testController {
         println("파일 다운로드되었음")
     }
 }
+*/

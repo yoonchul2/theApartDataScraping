@@ -1,17 +1,9 @@
-package com.matching.main.entity
-
+package com.bokbuin.main.model
 
 import java.math.BigDecimal
-import javax.persistence.*
 
-@Entity
-@Table(name ="mart_djy_08") //주택가격
-data class Martdjy08(
 
-        @Id
-        @GeneratedValue(strategy = GenerationType.AUTO)
-        @Column(name="idx")
-        val idx: Long?=null,
+data class MartDjy08Form(
 
         val bldgPk: String,
 
@@ -45,7 +37,7 @@ data class Martdjy08(
 
         val lot: String,
 
-        val etcLandNum: Int? = null,
+        val etcLandNum: Int,
 
         val addressDoroCd: String,
 
@@ -53,9 +45,9 @@ data class Martdjy08(
 
         val addressDoroUpdownCd: String,
 
-        val addressDoroBun: Int? = null,
+        val addressDoroBun: Int,
 
-        val addressDoroJi: Int?= null,
+        val addressDoroJi: Int,
 
         val standardDt: String,
 
@@ -63,4 +55,4 @@ data class Martdjy08(
 
         val createDt: String
 
-        )
+)
