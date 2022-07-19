@@ -1,9 +1,6 @@
 package com.matching.main.service
 
-import com.matching.main.entity.Martdjy03
-import com.matching.main.entity.Martdjy04
-import com.matching.main.entity.Martdjy06
-import com.matching.main.entity.Martdjy08
+import com.matching.main.entity.*
 import com.realdealbatch.query.batchQuery
 import lombok.extern.log4j.Log4j
 import org.springframework.beans.factory.annotation.Autowired
@@ -330,7 +327,17 @@ class BatchServiceImpl : BatchService {
         TODO("Not yet implemented")
     }
 
-    override fun insertBuildMapperTemp(): String {
-        TODO("Not yet implemented")
+    override fun insertBuildMapperTemp(){
+       var tempSelectData : MutableList<BuildMapperTemp> =  batchQuery(jdbcTemplate).selectBuildMapper()
+        var listData : MutableList<BuildMapperTemp> = mutableListOf()
+        tempSelectData.forEach{ data ->
+            listData.add(data)
+            if(listData.size == 100000){
+                batchQuery(jdbcTemplate).insertBuildMapper(listData)
+                listData = mutableListOf()
+            }
+        }
+        batchQuery(jdbcTemplate).insertBuildMapper(listData)
+//       return batchQuery(jdbcTemplate).selectBuildMapper()
     }
 }

@@ -1,12 +1,13 @@
 package com.realdealbatch.query
 
-import com.matching.main.entity.Martdjy03
-import com.matching.main.entity.Martdjy04
-import com.matching.main.entity.Martdjy06
-import com.matching.main.entity.Martdjy08
+import com.matching.main.entity.*
 import kotlinx.coroutines.runBlocking
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.jdbc.core.RowMapper
+import java.math.BigDecimal
+import java.sql.ResultSet
+import javax.persistence.Column
 
 class batchQuery( private val jdbcTemplate: JdbcTemplate) {
 
@@ -238,6 +239,49 @@ class batchQuery( private val jdbcTemplate: JdbcTemplate) {
         }
     }
 
+    fun selectBuildMapper() : MutableList<BuildMapperTemp>{
+          var test =  jdbcTemplate.query(
+                "SELECT md06.bldg_nm, md06.sigungu_cd, md06.dong_cd, md06.bun, md06.ji, md06.address, md06.address_doro, md06.address_doro_cd, main_use_nm, md06.extent" +
+                        "  FROM mart_djy_06 md06" +
+                        "  LEFT JOIN mart_djy_08 md08" +
+                        "    ON md06.bldg_pk = md08.bldg_pk" +
+                        " WHERE md06.extent_div_cd = '1'" +
+                        " GROUP BY md06.bldg_nm, md06.sigungu_cd, md06.dong_cd, md06.bun, md06.ji, md06.address, md06.address_doro, md06.address_doro_cd, md06.main_use_nm, md06.extent"
+
+              , RowMapper<BuildMapperTemp>{ rs: ResultSet, rowNum: Int ->
+                  BuildMapperTemp(
+                      null,
+                      0,
+                      0,
+                      rs.getString("bldg_Nm"),
+                      rs.getString("sigungu_cd"),
+                      rs.getString("dong_cd"),
+                      rs.getString("bun"),
+                      rs.getString("ji"),
+                      rs.getString("address"),
+                      rs.getString("address_doro"),
+                      rs.getString("address_doro_cd"),
+                      rs.getBigDecimal("extent"),
+                      rs.getString("main_use_nm"),
+                      ""
+                  )
+              }
+            )
+            println(test)
+           return test
+
+    }
 
 
+    fun insertBuildMapper(listData : MutableList<BuildMapperTemp>) {
+        runBlocking {
+            jdbcTemplate.batchUpdate(
+                "", // bulk insert에 사용할 기본 쿼리
+                listData, // insert할 모델
+                100000 // 1번의 batch로 함께 insert할 batch 사이즈
+            ) { ps, argument ->
+
+            }
+        }
+    }
 }

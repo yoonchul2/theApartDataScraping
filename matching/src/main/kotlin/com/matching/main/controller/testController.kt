@@ -134,6 +134,23 @@ class testController {
         return  fileList
     }
 
+
+    @PostMapping("/build-mapper")
+    fun buildMapper(): MutableList<Any>? {
+        var fileList: MutableList<Any> = mutableListOf()
+
+        kotlin.runCatching {
+            //쿼리실행
+            batchService.insertBuildMapperTemp()
+        }.onFailure {
+            it.printStackTrace()
+        }.onSuccess {
+            println(it)
+        }
+
+        return  fileList
+    }
+
     @PostMapping("/sss")
     fun testss(): MutableList<Any>? {
 
@@ -227,22 +244,6 @@ class testController {
         val stringArr = list.toTypedArray()
         return stringArr
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

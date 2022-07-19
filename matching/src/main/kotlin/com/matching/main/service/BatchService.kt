@@ -17,6 +17,6 @@ interface BatchService {
 
     fun selectBuildMapperTemp(): String
 
-    fun insertBuildMapperTemp(): String
+    fun insertBuildMapperTemp()
 
 }
