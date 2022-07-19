@@ -12,7 +12,7 @@ import org.springframework.scheduling.annotation.EnableScheduling
 @EnableScheduling
 @SpringBootApplication(scanBasePackages = ["com.realdealbatch", "com.matching"])
 @EnableBatchProcessing
-@EntityScan(basePackages = ["com.matching.main.entity"])
+@EntityScan(basePackages = ["com.matching.main.entity","com.matching.main.model"])
 class RealDealBatchApplication
 
 fun main(args: Array<String>) {
