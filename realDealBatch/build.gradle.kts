@@ -33,6 +33,10 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
+
+    //
+    implementation("org.apache.commons:commons-compress:1.21")
+
     // quartz
     implementation("org.springframework.boot:spring-boot-starter-quartz")
 
@@ -53,5 +57,8 @@ dependencies {
     //batch
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.springframework.boot:spring-boot-starter-quartz")
+
+
+    implementation("org.jsoup:jsoup:1.14.1")
 }
 
