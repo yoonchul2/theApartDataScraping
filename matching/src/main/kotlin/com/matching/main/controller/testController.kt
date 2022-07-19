@@ -9,13 +9,11 @@ import com.realdealbatch.query.batchQuery
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.jdbc.core.JdbcTemplate
+import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PostMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 import java.io.*
-import java.net.HttpURLConnection
-import java.net.URL
-import java.nio.channels.Channels
 import java.nio.charset.Charset
 import java.nio.charset.StandardCharsets
 
@@ -65,28 +63,6 @@ class testController {
         return  fileList
     }
 
-    @PostMapping("/update06")
-    fun update06(): MutableList<Any>? {
-        var fileList: MutableList<Any> = mutableListOf()
-        val path = File(file)
-        val fileArr: Array<File> = path.listFiles()
-        var test : String? = ""
-
-        for (file in fileArr) {
-            test = file.canonicalPath.toString() + File.separator.toString()
-            fileList.add(test)
-        }
-        kotlin.runCatching {
-            //쿼리실행
-            batchService.update06(test!!)
-        }.onFailure {
-            it.printStackTrace()
-        }.onSuccess {
-            println(it)
-        }
-
-        return  fileList
-    }
 
     @PostMapping("/insert08")
     fun insert08(): MutableList<Any>? {
@@ -111,8 +87,9 @@ class testController {
         return  fileList
     }
 
-    @PostMapping("/update08")
-    fun update08(): MutableList<Any>? {
+
+    @PostMapping("/insert03")
+    fun insert03(): MutableList<Any>? {
         var fileList: MutableList<Any> = mutableListOf()
         val path = File(file)
         val fileArr: Array<File> = path.listFiles()
@@ -124,7 +101,7 @@ class testController {
         }
         kotlin.runCatching {
             //쿼리실행
-            batchService.update08(test!!)
+            batchService.insert08(test!!)
         }.onFailure {
             it.printStackTrace()
         }.onSuccess {
@@ -133,6 +110,30 @@ class testController {
 
         return  fileList
     }
+
+    @PostMapping("/insert04")
+    fun insert04(): MutableList<Any>? {
+        var fileList: MutableList<Any> = mutableListOf()
+        val path = File(file)
+        val fileArr: Array<File> = path.listFiles()
+        var test : String? = ""
+
+        for (file in fileArr) {
+            test = file.canonicalPath.toString() + File.separator.toString()
+            fileList.add(test)
+        }
+        kotlin.runCatching {
+            //쿼리실행
+            batchService.insert08(test!!)
+        }.onFailure {
+            it.printStackTrace()
+        }.onSuccess {
+            println(it)
+        }
+
+        return  fileList
+    }
+
     @PostMapping("/sss")
     fun testss(): MutableList<Any>? {
 
@@ -226,4 +227,25 @@ class testController {
         val stringArr = list.toTypedArray()
         return stringArr
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }

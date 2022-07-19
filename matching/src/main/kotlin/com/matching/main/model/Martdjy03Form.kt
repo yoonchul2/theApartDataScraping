@@ -7,6 +7,7 @@ import javax.persistence.*
 
 data class Martdjy03Form(
 
+
         val bldgPk : String,
 
         val bldgDivCd : String,
@@ -32,7 +33,7 @@ data class Martdjy03Form(
         val bun : String,
 
         val ji : String,
-        
+
         val specialLandNm : String,
 
         val block : String,
@@ -74,6 +75,12 @@ data class Martdjy03Form(
         val strcNm : String,
 
         val etcStrcNm : String,
+
+        val mainUseCd : String,
+
+        val mainUseNm : String,
+
+        val etcUseNm : String,
 
         val roofCd : String,
 
@@ -129,6 +136,10 @@ data class Martdjy03Form(
 
         val pmsnoKikCdNm : String,
 
+        val pmsnoGbCd : String,
+
+        val pmsnoGbCdNm : String,
+
         val hoCnt : Int,
 
         val engrGrade : String,
@@ -151,3 +162,4 @@ data class Martdjy03Form(
 
         val rserthqkAblty : String
         )
+

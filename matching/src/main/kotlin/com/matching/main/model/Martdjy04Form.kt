@@ -7,7 +7,6 @@ import javax.persistence.*
 
 data class Martdjy04Form(
 
-        val idx: Long?=null,
 
         val bldgPk: String,
 

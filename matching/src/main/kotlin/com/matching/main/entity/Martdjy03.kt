@@ -100,6 +100,14 @@ data class Martdjy03(
 
         val etcStrcNm : String,
 
+        @Column(length = 5)
+        val mainUseCd : String,
+
+        @Column(length = 100)
+        val mainUseNm : String,
+
+        val etcUseNm : String,
+
         @Column(length = 2)
         val roofCd : String,
 
@@ -171,6 +179,12 @@ data class Martdjy03(
         val pmsnoKikCd : String,
 
         val pmsnoKikCdNm : String,
+
+        @Column(length = 4)
+        val pmsnoGbCd : String,
+
+        @Column(length = 100)
+        val pmsnoGbCdNm : String,
 
         @Column(length = 5)
         val hoCnt : Int,
