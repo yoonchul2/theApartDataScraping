@@ -1,6 +1,8 @@
 package com.matching.main.controller
 
 
+import com.matching.main.entity.BuildMapperTemp
+import com.matching.main.entity.Martdjy06
 import com.matching.main.entity.Martdjy08
 import com.matching.main.service.BatchService
 import com.matching.main.service.userService
@@ -25,6 +27,11 @@ class testController {
     @Autowired
     lateinit var userService : userService
 
+  //    val content = readFile(test!!, StandardCharsets.UTF_8)
+  //    println(content)
+  //    return  fileList
+  //}
+
 
 
 
@@ -37,7 +44,6 @@ class testController {
 
     @Autowired
     lateinit var  batchService: BatchService
-
 
 
     @PostMapping("/insert06")
@@ -88,6 +94,7 @@ class testController {
     }
 
 
+
     @PostMapping("/insert03")
     fun insert03(): MutableList<Any>? {
         var fileList: MutableList<Any> = mutableListOf()
@@ -101,7 +108,7 @@ class testController {
         }
         kotlin.runCatching {
             //쿼리실행
-            batchService.insert08(test!!)
+            batchService.insert03(test!!)
         }.onFailure {
             it.printStackTrace()
         }.onSuccess {
@@ -124,7 +131,7 @@ class testController {
         }
         kotlin.runCatching {
             //쿼리실행
-            batchService.insert08(test!!)
+            batchService.insert04(test!!)
         }.onFailure {
             it.printStackTrace()
         }.onSuccess {
@@ -134,10 +141,8 @@ class testController {
         return  fileList
     }
 
-
-    @PostMapping("/build-mapper")
-    fun buildMapper(): MutableList<Any>? {
-        var fileList: MutableList<Any> = mutableListOf()
+    @PostMapping("/insertBuildMapperTemp")
+    fun insertBuildMapperTemp(){
 
         kotlin.runCatching {
             //쿼리실행
@@ -148,28 +153,30 @@ class testController {
             println(it)
         }
 
-        return  fileList
     }
 
-    @PostMapping("/sss")
-    fun testss(): MutableList<Any>? {
 
-        var fileList: MutableList<Any> = mutableListOf()
 
-        println(file)
-        val path = File(file)
-        println(path)
-        val fileArr: Array<File> = path.listFiles()
-        println(fileArr[0])
 
-        var test : String? = ""
+  @PostMapping("/sss")
+  fun testss(): MutableList<Any>? {
 
-        for (file in fileArr) {
-                     test = file.canonicalPath.toString() + File.separator.toString()
+      var fileList: MutableList<Any> = mutableListOf()
 
-                    println("--------")
-                    println(test)
-                    fileList.add(test)
+      println(file)
+      val path = File(file)
+      println(path)
+      val fileArr: Array<File> = path.listFiles()
+      println(fileArr[0])
+
+      var test: String? = ""
+
+      for (file in fileArr) {
+          test = file.canonicalPath.toString() + File.separator.toString()
+
+          println("--------")
+          println(test)
+          fileList.add(test)
 
 
         }
@@ -181,72 +188,69 @@ class testController {
 
 
 
-    fun readFile(path: String, encoding: Charset): Array<Martdjy08> {
-        val file = File(path)
-        val ind = BufferedReader(FileReader(file))
-        var str: String? = ""
-        var list: MutableList<Martdjy08> = mutableListOf()
-        var data2: MutableList<String> = mutableListOf()
-        var data : MutableList<String> = mutableListOf()
-        do{
-            if(str != "") {
-                data = str?.split("|") as MutableList<String>
+      fun readFile(path: String, encoding: Charset): Array<Martdjy08> {
+          val file = File(path)
+          val ind = BufferedReader(FileReader(file))
+          var str: String? = ""
+          var list: MutableList<Martdjy08> = mutableListOf()
+          var data2: MutableList<String> = mutableListOf()
+          var data: MutableList<String> = mutableListOf()
+          do {
+              if (str != "") {
+                  data = str?.split("|") as MutableList<String>
 
-                if(data[20] == ""){
-                    data[20] = "0"
-                }
-                if(data[21] == ""){
-                    data[21] = "0"
-                }
-                list.add(
-                    Martdjy08(
-                        bldgPk = data[0],
-                        bldgDivCd = data[1],
-                        bldgDivNm =  data[2],
-                        bldgKindCd = data[3],
-                        bldgKindNm = data[4],
-                        address = data[5],
-                        addressDoro = data[6],
-                        bldgNm = data[7],
-                        sigunguCd = data[8],
-                        dongCd = data[9],
-                        landDivCd = data[10],
-                        bun = data[11],
-                        ji = data[12],
-                        specialLandNm = data[13],
-                        block = data[14],
-                        lot = data[15],
-                        etcLandNum = data[16].toInt(),
-                        addressDoroCd = data[17],
-                        addressDoroLawdCd = data[18],
-                        addressDoroUpdownCd = data[19],
-                        addressDoroBun = data[20].toInt(),
-                        addressDoroJi = data[21].toInt(),
-                        standardDt = data[22],
-                        price = data[23].toBigDecimal(),
-                        createDt = data[24]
-                        )
-                    )
-                }
-                println("size:" + list.size)
-                if(list.size == 100000){
-                    batchQuery(jdbcTemplate).insert08(list)
-                    list = mutableListOf()
-                }
+                  if (data[20] == "") {
+                      data[20] = "0"
+                  }
+                  if (data[21] == "") {
+                      data[21] = "0"
+                  }
+                  list.add(
+                      Martdjy08(
+                          bldgPk = data[0],
+                          bldgDivCd = data[1],
+                          bldgDivNm = data[2],
+                          bldgKindCd = data[3],
+                          bldgKindNm = data[4],
+                          address = data[5],
+                          addressDoro = data[6],
+                          bldgNm = data[7],
+                          sigunguCd = data[8],
+                          dongCd = data[9],
+                          landDivCd = data[10],
+                          bun = data[11],
+                          ji = data[12],
+                          specialLandNm = data[13],
+                          block = data[14],
+                          lot = data[15],
+                          etcLandNum = data[16].toInt(),
+                          addressDoroCd = data[17],
+                          addressDoroLawdCd = data[18],
+                          addressDoroUpdownCd = data[19],
+                          addressDoroBun = data[20].toInt(),
+                          addressDoroJi = data[21].toInt(),
+                          standardDt = data[22],
+                          price = data[23].toBigDecimal(),
+                          createDt = data[24]
+                      )
+                  )
+              }
+              println("size:" + list.size)
+              if (list.size == 100000) {
+                  batchQuery(jdbcTemplate).insert08(list)
+                  list = mutableListOf()
+              }
 
-        } while (ind.readLine().also { str = it } != null)
-        ind.close()
-        batchQuery(jdbcTemplate).insert08(list)
-        System.out.println("-------------------------")
-        System.out.println(data2)
-        System.out.println("-------------------------")
+          } while (ind.readLine().also { str = it } != null)
+          ind.close()
+          batchQuery(jdbcTemplate).insert08(list)
+          System.out.println("-------------------------")
+          System.out.println(data2)
+          System.out.println("-------------------------")
 
-        val stringArr = list.toTypedArray()
-        return stringArr
-    }
-
-
-
+          val stringArr = list.toTypedArray()
+          return stringArr
+      }
 
 
 }

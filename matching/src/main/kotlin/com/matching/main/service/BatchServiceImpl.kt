@@ -323,21 +323,26 @@ class BatchServiceImpl : BatchService {
     }
 
 
-    override fun selectBuildMapperTemp(): String {
-        TODO("Not yet implemented")
-    }
 
     override fun insertBuildMapperTemp(){
        var tempSelectData : MutableList<BuildMapperTemp> =  batchQuery(jdbcTemplate).selectBuildMapper()
         var listData : MutableList<BuildMapperTemp> = mutableListOf()
+
         tempSelectData.forEach{ data ->
             listData.add(data)
+            println("size: ${listData.size}")
             if(listData.size == 100000){
                 batchQuery(jdbcTemplate).insertBuildMapper(listData)
                 listData = mutableListOf()
             }
         }
         batchQuery(jdbcTemplate).insertBuildMapper(listData)
-//       return batchQuery(jdbcTemplate).selectBuildMapper()
+
+        println("fin!")
+ //       return batchQuery(jdbcTemplate).selectBuildMapper()
+
     }
+
+
+
 }
