@@ -10,9 +10,8 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories
 import org.springframework.scheduling.annotation.EnableScheduling
 
 @EnableScheduling
-@SpringBootApplication(scanBasePackages = ["com.realdealbatch", "com.matching"])
-@EnableBatchProcessing
-@EntityScan(basePackages = ["com.matching.main.entity","com.matching.main.model"])
+@SpringBootApplication(scanBasePackages = ["com.realdealbatch"])
+//@EnableBatchProcessing
 class RealDealBatchApplication
 
 fun main(args: Array<String>) {

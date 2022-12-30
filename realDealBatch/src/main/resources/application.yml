@@ -5,6 +5,7 @@ spring:
     show-sql: true
     hibernate:
       ddl-auto: none
+      naming.physical-strategy : org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
     properties:
       hibernate:
         jdbc:
@@ -18,8 +19,8 @@ spring:
   datasource:
     hikari:
       maximum-pool-size: 4
-    url: jdbc:mysql://localhost:3306/matching?rewriteBatchedStatements=true
-    username: root
+    url: jdbc:mysql://221.168.33.186:3306/complex_UN7007
+    username: admin
     password: 1234
     driver-class-name: com.mysql.cj.jdbc.Driver
   output:

@@ -33,7 +33,8 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor")
 
-
+    implementation("org.apache.poi:poi:4.1.1")
+    implementation("org.apache.poi:poi-ooxml:4.1.1")
     //
     implementation("org.apache.commons:commons-compress:1.21")
 
@@ -53,12 +54,16 @@ dependencies {
     implementation("com.squareup.retrofit2:converter-simplexml:2.7.2")
 
     implementation("mysql:mysql-connector-java")
+    implementation("org.seleniumhq.selenium:selenium-java:4.7.2")
 
     //batch
     implementation("org.springframework.boot:spring-boot-starter-batch")
     implementation("org.springframework.boot:spring-boot-starter-quartz")
-
-
+    implementation("org.dhatim:fastexcel:0.12.3")
+    implementation("org.dhatim:fastexcel-reader:0.12.3")
+    compileOnly("org.projectlombok:lombok")
+//    developmentOnly("org.springframework.boot:spring-boot-devtools")
+    annotationProcessor("org.projectlombok:lombok")
     implementation("org.jsoup:jsoup:1.14.1")
 }
 
