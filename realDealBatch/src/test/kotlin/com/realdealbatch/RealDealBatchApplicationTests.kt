@@ -1,6 +1,7 @@
 package com.realdealbatch
 
 import com.realdealbatch.entity.Occ
+import com.realdealbatch.entity.OccExpenses
 import com.realdealbatch.entity.OccFcm
 import com.realdealbatch.entity.OccFm
 import com.realdealbatch.repository.*
@@ -27,24 +28,35 @@ class RealDealBatchApplicationTests {
     fun contextLoads() {
 
         var fileList: MutableList<Any> = mutableListOf()
-        val path = File("C:/Users/mrsbok/Downloads/A08897_202211_Man2070.txt")
+        val path = File("C:/Users/mrsbok/Downloads/A08897_202211_Man2070 (1).txt")
 //        val fileArr: Array<File> = path.listFiles()
         var test : String? = ""
 
         val reader = BufferedReader(FileReader(path, Charsets.UTF_8))
+        var ii = 0;
+        var iix = 0;
+        var list : MutableList<Int> = mutableListOf()
         reader.lines().forEach {
+
             when(it){
-                "<billmaster>" -> println(it)
-                else -> null
+                "<mangoji>" -> list.add(ii)
+                "<manjojeong>" -> list.add(ii)
             }
 
-            if(it  == "<billmaster>"){
+            ii++
+        }
+        reader.lines().forEach {
 
-            }
+         if(list[0] < iix && iix < list[1]){
+            var list2 =  it.split("|")
 
-
+             var data = OccExpenses()
+         }
+            iix++
         }
 
+
+        println(list)
 //        for (file in fileArr) {
 //            test = file.canonicalPath.toString() + File.separator.toString()
 //            fileList.add(test)

@@ -31,7 +31,7 @@ import java.time.LocalDateTime
 
 
 @RestController
-@RequestMapping( "test4")
+@RequestMapping( "user")
 class UserInfoController(
 ) {
 
@@ -75,7 +75,7 @@ class UserInfoController(
     var WEB_DRIVER_ID = "webdriver.chrome.driver"
     var WEB_DRIVER_PATH = "C:/Users/mrsbok/Downloads/chromedriver.exe"
 
-    @PostMapping("/start")
+    @PostMapping("/start1")
     fun NaverLogin() {
         // WebDriver 경로 설정
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH)
@@ -85,9 +85,8 @@ class UserInfoController(
 
         System.setProperty("webdriver.chrome.driver", "C:/Users/mrsbok/Downloads/chromedriver.exe")
 
-
-
-
+        //백그라운드 실행
+        options.addArguments("headless")
 
         Runtime.getRuntime()
             .exec("C:/Program Files/Google/Chrome/Application/chrome.exe --remote-debugging-port=9222 --user-data-dir=\"C:/selenum/AutomationProfile\"")
@@ -111,33 +110,33 @@ class UserInfoController(
         Thread.sleep(2000); // 3. 페이지 로딩 대기 시간
 
 
-        // 4. 로그인 버튼 클릭
+        //자바 스크립트 드라이버 로드
         var js: JavascriptExecutor? = driver as JavascriptExecutor
 
 
         Thread.sleep(2000)
-
+        //입주자 리스트 셀렉트박스 선택
         js?.executeScript("$('#cobPRT option:contains(\"입주자리스트(전체)\")').prop(\"selected\", true);")
 
-        Thread.sleep(2000)
 
 
+        Thread.sleep(4000)
 
 
-
-
-        Thread.sleep(2000)
-
+        //조회버튼 가져오기
         val element2 = driver?.findElement(By.id("btnSearch"))
+
+        //버튼 클릭
          element2?.click()
 
 
 
         Thread.sleep(2000)
+        Thread.sleep(2000)
+        Thread.sleep(2000)
+        Thread.sleep(2000)
 
-        Thread.sleep(2000)
-        Thread.sleep(2000)
-        Thread.sleep(2000)
+        //엑셀 다운로드
        var vv = js?.executeScript(
            "var file_nm2 = '';" +
        "function ActionExcelDownload2() {\n" +
@@ -194,15 +193,23 @@ class UserInfoController(
 //        val element3= driver?.findElement(By.id("btnExcelDownload"))
 //        element3?.click()
 
+
+        //파일 다운로드 -> 프로젝트 폴더로 이동
         val oldfile: Path = Paths.get("C:\\Users\\mrsbok\\Downloads\\${vv}")
         val newfile: Path = Paths.get("C:\\Users\\mrsbok\\bokbuin_refactoring\\realDealBatch\\file\\${vv}")
         Files.move(oldfile, newfile, StandardCopyOption.ATOMIC_MOVE);
 
 
         var data = 0;
+
+        //엑셀파일 로드
         val path = File("C:\\Users\\mrsbok\\bokbuin_refactoring\\realDealBatch\\file\\${vv}")
         val workbook = XSSFWorkbook(path)
+
+        //시트 열기
         var worksheet = workbook.getSheetAt(0)
+
+        //데이터 선별작업
         for (rowIndex in 0 until worksheet.physicalNumberOfRows) {
             val row = worksheet.getRow(rowIndex)
             var occ : Occ ?= null
@@ -210,6 +217,8 @@ class UserInfoController(
 
             var occfm : OccFm ?= null
 
+
+            //세대주만 저장
             if(row.getCell(23).stringCellValue == "세대주"){
 
                 val dongId = dongRepository.findDongByDongNum(row.getCell(1).stringCellValue);
@@ -249,12 +258,16 @@ class UserInfoController(
         }
 
        File("C:\\Users\\mrsbok\\bokbuin_refactoring\\realDealBatch\\file\\${vv}").delete()
+
+        driver?.quit()
     return ""
     }
     var occId : Long ?= null
     var hoIdx : Long ?= null
     var ofIdx : Long ?= null
 
+
+    //로그인 페이지 시작
     fun activateBot() {
         driver?.get(url);
         Thread.sleep(2000); // 3. 페이지 로딩 대기 시간

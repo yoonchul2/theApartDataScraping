@@ -82,7 +82,7 @@ class CarInfoController(
     var WEB_DRIVER_ID = "webdriver.chrome.driver"
     var WEB_DRIVER_PATH = "C:/Users/mrsbok/Downloads/chromedriver.exe"
 
-    @PostMapping("/start")
+    @PostMapping("/start2")
     fun NaverLogin() {
         // WebDriver 경로 설정
         System.setProperty(WEB_DRIVER_ID, WEB_DRIVER_PATH)
@@ -90,19 +90,19 @@ class CarInfoController(
         // 2. WebDriver 옵션 설정
         val options = ChromeOptions()
 
-        System.setProperty("webdriver.chrome.driver", "C:/Users/mrsbok/Downloads/chromedriver.exe")
+//        System.setProperty("webdriver.chrome.driver", "C:/Users/mrsbok/Downloads/chromedriver.exe")
 
 
         Runtime.getRuntime()
             .exec("C:/Program Files/Google/Chrome/Application/chrome.exe --remote-debugging-port=9222 --user-data-dir=\"C:/selenum/AutomationProfile\"")
 
         options.setExperimentalOption("debuggerAddress", "127.0.0.1:9222")
-
-        options.addArguments("--start-normal")
+        options.addArguments("headless")
+        options.addArguments("--start-maximized")
         options.addArguments("--disable-popup-blocking")
         driver = ChromeDriver(options)
 
-        driver?.manage()?.window()?.maximize()
+//        driver?.manage()?.window()?.maximize()
 
         url = "https://apt.dozn.co.kr/"
         //activateBot()
@@ -112,18 +112,23 @@ class CarInfoController(
         driver?.get("https://apt.dozn.co.kr/VINARISA/OCPT/VIN63600.aspx?OCPT060");
         Thread.sleep(2000); // 3. 페이지 로딩 대기 시간
 
-        // 4. 로그인 버튼 클릭
+        // 자바 스크립트 로드
         var js: JavascriptExecutor? = driver as JavascriptExecutor
 
         Thread.sleep(2000)
 
+        //조회버튼 찾기
         val element2 = driver?.findElement(By.id("btnSearch"))
 
         Thread.sleep(2000)
+
+        //조회 버튼 클릭
          element2?.click()
 
         Thread.sleep(8000)
 
+
+       // 엑셀 다운로드
        var vv = js?.executeScript(
            "var file_nm2 = '';" +
        "function ActionExcelDownload2() {\n" +
@@ -226,6 +231,7 @@ class CarInfoController(
 
         }
         File("C:\\Users\\mrsbok\\bokbuin_refactoring\\realDealBatch\\file\\${vv}").delete()
+        driver?.quit()
     return ""
     }
     var occId : Long ?= null
