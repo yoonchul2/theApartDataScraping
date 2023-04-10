@@ -15,7 +15,6 @@ import org.openqa.selenium.WebDriver
 import org.openqa.selenium.WebElement
 import org.openqa.selenium.chrome.ChromeDriver
 import org.openqa.selenium.chrome.ChromeOptions
-import org.openqa.selenium.remote.DesiredCapabilities
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.web.bind.annotation.PostMapping
@@ -32,7 +31,7 @@ import java.time.LocalDateTime
 
 @RestController
 @RequestMapping( "user")
-class UserInfoController(
+class ScrapingController(
 ) {
 
             @Autowired
@@ -131,9 +130,6 @@ class UserInfoController(
 
 
 
-        Thread.sleep(2000)
-        Thread.sleep(2000)
-        Thread.sleep(2000)
         Thread.sleep(2000)
 
         //엑셀 다운로드
